@@ -1,0 +1,21 @@
+<?php
+class Config{
+    private static $DB_NAME = 'creatividad_openapp_sitio';
+    private static $DB_HOST = 'localhost';
+    private static $DB_USER = 'creatividad';
+    private static $DB_PASS = 'cr34t1v1d4d';
+
+    private static $ModuloPrincipal = 'Home';
+    private static $ModuloError404 = 'Home';
+    private static $MetodoPrincipal = "Run";
+    
+    private static $CarpetaControlador = "controladores";
+    private static $CarpetaModelo = "modelos";
+    private static $CarpetaVista = "vistas";
+
+    public static function Take($Valor){
+        $Return = false;
+        eval('$Return = self::$'.$Valor.';');
+        return $Return;
+    }
+}

@@ -1,0 +1,37 @@
+<!--<div class="PosicionAbsoluta" style="left: 25px;top:260px;"><a href="<?php echo CESIS::$ROOT; ?>Agenda/" target="_self"><img src="<?php echo CESIS::$ROOT; ?>img/encontranos.png" border="0"/></a></div>-->
+<div class="Centrar AnchoContenedor Transparente">
+    <div class="FormProyecto">
+        <div><img src="<?php echo CESIS::$ROOT; ?>img/CargaTuProyecto.png" /></div>
+        <?php 
+            if(!openapp::isLogin()){
+        ?>
+        <form action="<?php echo CESIS::$ROOT; ?>Home/LogeateExt/<?php echo $Key; ?>" method="post" >
+            
+            <input type="hidden" name="CargaFilePropuesta" value="<?php echo $Key.$Instancia;?>"/>
+             <div class="CLogin" style="padding: 20px;">
+                <div class="Contenedor">
+                    <div><img src="<?php echo CESIS::$ROOT; ?>img/mail.png"/></div>
+                    <div class="Margin"><input type="text" name="user" value="" /></div>
+                    <div><img src="<?php echo CESIS::$ROOT; ?>img/contrasena.png"/></div>
+                    <div class="Margin"><input type="password" name="pass" value="" /></div>
+                    <div class="PunteroCursor" src="<?php echo CESIS::$ROOT; ?>img/x.png" style="font-size:11px; font-weight: bold; color:#FFF;margin-top: 5px;" onclick="PopUp('<?php echo CESIS::$ROOT;?>Home/FormOClave',true);Effect.Squish('Form');" >Olvid&eacute; mi contrase&ntilde;a</div>
+                    <div><input type="submit"/></div>
+               </div>
+           </div>
+        </form>
+        <?php }else{ ?>
+        <form action="<?php echo CESIS::$ROOT; ?>Proyectos/UpLoadFile/<?php echo $Proyectos->getId();?>" method="post" onSubmit="return Validar(this);" enctype="multipart/form-data">
+            <div class="CProyecto" style="margin-top: 10px;">
+                <span>Carg&aacute; tu propuesta en un archivo</span>
+                <div class="Contenedor">
+                    <input type="file" name="manual" Onchange="VerificarExtencion(this, 'Archivo');" validar="rq"/>
+                    <br/><br/>
+                    <input type="submit" value="Subir"/>
+               </div>
+           </div>
+        </form>
+        <?php 
+            }
+        ?>
+    </div>
+</div>

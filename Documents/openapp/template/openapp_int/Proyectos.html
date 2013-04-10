@@ -1,0 +1,101 @@
+<!--<div class="PosicionAbsoluta" style="left: 25px;top:260px;"><a href="<?php echo CESIS::$ROOT; ?>Agenda/" target="_self"><img src="<?php echo CESIS::$ROOT; ?>img/encontranos.png" border="0"/></a></div>-->
+<div class="AnchoContenedor Centrar Transparente">
+    <div class="TituloInteriorCont" style="margin-bottom: 10px;">
+        <img src="<?php echo CESIS::$ROOT; ?>img/proyectos_postulados.png"/>
+    </div>
+    <!--<div id="Filtro">
+        <form>
+            <div>
+                <div class="Left">Ordenar por: 
+                    <span>puntos</span><input type="radio" name="Ordenar[]" value="puntos"/>
+                    <span>valoraci&oacute;n</span><input type="radio" name="Ordenar[]" value="valoracion"/>
+                    <span>recientes</span><input type="radio" name="Ordenar[]" value="recientes"/>
+                </div>
+                <div>
+                    Filtrar por:<select name="Tipos">
+                        <option value="0">Todos</option>
+                        <option value="1">Juegos</option>
+                        <option value="2">Moviles</option>
+                        <option value="2">Pymes</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div-->   
+    <div id="ListaProy">
+       <?php
+            if (count($Proyectos) > 0){
+                foreach($Proyectos as $_Proyectos){?>
+                <div class="Proyecto">
+                    <div style="position: absolute; right: -21px; top: 21px; width:220px">
+                        <!--a href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank"><img src="<?php echo CESIS::$ROOT; ?>img/ico_face.png"/></a-->
+                        <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fopenapp.com.ar%2FProyectos%2FVer%2F<?php echo $_Proyectos['key']; ?>&amp;send=false&amp;layout=button_count&amp;width=150&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=trebuchet+ms&amp;height=90" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:30px;" allowTransparency="true"></iframe>
+                        <!--img src="<?php echo CESIS::$ROOT; ?>img/ico_twitter.png"/-->
+                        <!--div><a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php echo $_Proyectos['ShortUri']; ?>" data-text="" data-count="horizontal" data-via="OpenApp_Arg" data-lang="es">Twittear</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script></div-->
+                        <br/>
+                        <iframe scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/tweet_button.html#_=1322683800780&amp;count=horizontal&amp;counturl=<?php echo 'http://www.openapp.com.ar/Proyectos/Ver/'.$_Proyectos['key'];?>&amp;id=twitter_tweet_button_2&amp;lang=en&amp;original_referer=http%3A%2F%2Fwww.openapp.com.ar%2F&amp;text=<?php echo str_replace('+','%20',urlencode ('Doy un voto por este proyecto de OpenApp :: '.$_Proyectos['Nombre']));?>&amp;url=<?php echo urlencode($_Proyectos['ShortUri']); ?>&amp;via=OpenApp_Arg" class="twitter-share-button twitter-count-horizontal" style="position:absolute; right:0px; top:0px; height:20px; width:110px"  title="Twitter For Websites: Tweet Button"></iframe>
+                    
+                    </div>
+                    <div class="ProyectTitle"><img src="<?php echo CESIS::$ROOT; ?>img/indicador_proyecto.png"/><a href="<?php echo CESIS::$ROOT; ?>Proyectos/Ver/<?php echo $_Proyectos['key']; ?>"><span class="Resaltar">Proyecto: <?php echo $_Proyectos['Nombre']; ?></span></a></div>
+                    <div>
+                        <div class="Left Col1">
+                            <a href="<?php echo CESIS::$ROOT; ?>Proyectos/Ver/<?php echo $_Proyectos['key']; ?>">
+                            <?php if(isset($_Proyectos['Logo']) AND !is_null($_Proyectos['Logo']) AND $_Proyectos['Logo'] != ""){?>
+                                <img src="<?php echo CESIS::$ROOT; ?>archivos/logos/<?php echo $_Proyectos['Logo']; ?>" width="122" align="top"/>
+                            <?php }else{ ?>
+                                <img src="<?php echo CESIS::$ROOT; ?>img/sin_imagen_chica.png" width="122" align="top"/>
+                            <?php } ?>
+                            </a>
+                        </div>
+                        <div class="Left Col2">
+                            <span class="Resaltar">Descripci&oacute;n de la idea</span>
+                            <p><?php echo substr($_Proyectos['Descripcion'],0,200); ?><span class="Resaltar"><a href="<?php echo CESIS::$ROOT; ?>Proyectos/Ver/<?php echo $_Proyectos['key']; ?>">... (+)</a></span></p>
+                        </div>
+                        <div class="Clr">&nbsp;</div>
+                    </div>
+                </div>
+           <?php }?>
+            <!--Paginador-->
+                <?php
+                   if ($CantDePag > 1){
+                ?>
+                    <div style="margin-bottom: 20px;">
+                    <?php
+                    $i=0;
+                    while ($i<$CantDePag){
+                        $i++;
+                    ?>
+
+                    <?php
+                        if($PagAct == $i){
+                    ?>
+                            <div style="background-color: #92c233;float:left;font-family:Trebuchet MS,Arial;color:#000000;font-size:10px;margin-right: 4px; height: 17px; width: 20px;text-align: center">
+                            <span style="font-size:12px;font-weight:bold"><?php echo $i ;?></span>
+                        <?php
+                        }else{
+                        ?>
+                            <div style="background-color: #000000;float:left;font-family:Trebuchet MS,Arial;font-size:11px;margin-right: 4px;height: 17px; width: 20px;text-align: center">
+                            <a href="<?php echo CESIS::$ROOT; ?>Proyectos/Listado/<?php echo $i ;?>" style="color:#ffffff"><?php echo $i ;?></a>
+                        <?php
+                        }
+                        ?>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                    <div style="clear:both;"></div></div>
+            <?php
+                }
+             }else{
+             ?>
+                <div class="Proyecto">
+                    <div class="ProyectTitle" align="center"><h3 class="Resaltar">No hay ning&uacute;n proyecto cargado.</h3></div>
+                </div>
+                
+             <?php
+                }
+             ?>   
+               
+        </div>
+    </div>
+</div>

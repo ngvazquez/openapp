@@ -1,0 +1,28 @@
+<?php
+$extencion = explode(".", GET::take("id"));
+switch($extencion[1]){
+    case "pdf":$aplication= "pdf";
+        break;
+    case "doc":$aplication = "msword";
+        break;
+    case "docx":$aplication = "msword";
+        break;
+    case "pps":$aplication = "powerpoint";
+        break;
+    case "ppsx":$aplication = "powerpoint";
+        break;
+    case "ppt":$aplication = "powerpoint";
+        break;
+    case "pptx":$aplication = "powerpoint";
+        break;
+}
+
+$tam = filesize("archivos/pdf/".GET::take("id"));
+
+header("Content-type: application/".$aplication);
+header("Content-Length: $tam"); 
+header("Content-Disposition: inline; filename=archivos/pdf/".GET::take("id"));
+
+$file="archivos/pdf/".GET::take("id");
+readfile($file);
+?> 

@@ -1,0 +1,65 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#c0c0c0"><tr><td align="center" valign="top" style="background-color:#c0c0c0;">
+    <div style="width:600px; margin:15px auto; padding:0;text-align:center;">
+        <table width="600" cellpadding="0" cellspacing="0" border="0" style="background-color:#fff; margin:0 auto;paddding:0; font-family:Arial, Helvetica, sans-serif">
+        	<tr>
+      			<td width="600" style="vertical-align:top; font-size:0">
+                	<table cellpadding="0" cellspacing="0" border="0" width="600">
+                    	<tr>
+                        	<td width="154" style="vertical-align:top; font-size:0"><img src="http://www.epexo.com/images/openapp/LogoOpenApp.jpg" width="154" height="151" /></td>
+                            <td width="446" style="vertical-align:top; font-size:0"><img src="http://www.epexo.com/images/openapp/ElconcursoNacional.jpg" width="446" height="151" /></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>            
+            <tr>
+                <td width="600" style="vertical-align:top; font-size:0">
+                    <table cellpadding="0" cellspacing="0" border="0" width="600">
+                        <tr>
+                            <td width="151" style="vertical-align:top; font-size:0">&nbsp;</td>
+                            <td width="410" style="vertical-align:top; font-size:0">
+                                <table cellpadding="0" cellspacing="0" border="0" width="410">
+                                    <tr>
+                                        <td width="410" style="vertical-align:top; font-size:0;text-align:left"><img src="http://www.epexo.com/images/openapp/mail_confirmacion.jpg" width="359" height="34"></td>
+                               	  </tr>
+                                    <tr>
+                                        <td height="30" width="410" style="vertical-align:top; font-size:0" >&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="410" height="5" style="color:#FFFFFF; font-size:0px">&nbsp;</td>
+                                    </tr>
+									<tr>
+                                        <td width="410" style="vertical-align:top; font-size:12px; font-family:Arial, Helvetica, sans-serif; color:#413e3f;text-align:left; font-weight:bold">Nombre del Proyecto: <span style="color:#2290af; font-weight:normal"><?php echo $Proyecto->getNombre(); ?></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="410" height="5" style="color:#FFFFFF; font-size:0px">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td height="30" width="410" style="vertical-align:top; font-size:0" >&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="410" style="vertical-align:top; font-size:12px; font-family:Arial, Helvetica, sans-serif; color:#242021; text-align:left; font-weight:bold">Para completar la carga del proyecto:
+                                            <?php
+                                                $SERVER = $_SERVER["SERVER_NAME"];
+                                                $URL = "";
+                                                if(strstr("http:", $SERVER) === false){
+                                                    $URL .= "http://";
+                                                }
+                                                $URL .= $SERVER;
+                                                $URL .= CESIS::$ROOT."Proyectos/Inscripcion/".$Key;
+                                            ?>
+                                            <a href="<?php echo $URL; ?>" target="_blank" style="vertical-align:top; font-size:12px; font-family:Arial, Helvetica, sans-serif; color:#2290af;text-align:left; font-weight:bold">hace click aqu&iacute;</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="39" style="vertical-align:top; font-size:0">&nbsp;</td>
+                        </tr>
+                    </table>    
+                </td>
+            </tr>
+            <tr>
+            	<td height="100" width="600" style="vertical-align:top; font-size:0">&nbsp;</td>
+            </tr>
+       </table>
+    </div>
+</td></tr></table>

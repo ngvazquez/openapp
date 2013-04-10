@@ -1,0 +1,51 @@
+<form action="#" onSubmit="SubmitForm('<?php echo CESIS::$ROOT; ?>Home/RegResponsable/',this,MensOKReg,MensErrorReg);return false;">
+    <div class="BackRegistracion">
+        <div align="left" style="margin-bottom: 20px;"><img src="<?php echo CESIS::$ROOT; ?>img/registracion.png"/></div>
+        <div class="Left" style="width:347px;">
+            <div class="Left AnchoDiv Margin Alineacion"><span style="font-size: 7px;">>&nbsp;</span>Nombre</div>
+            <div class="Left AnchoDiv Margin"><input type="text" name="nombre" value="" /></div>
+            <div class="Clr"></div>
+            <div class="Left AnchoDiv Margin Alineacion"><span style="font-size: 7px;">>&nbsp;</span>Apellido</div>
+            <div class="Left AnchoDiv Margin"><input type="text" name="apellido" value="" /></div>
+            <div class="Clr"></div>
+            <div class="Left AnchoDiv Margin Alineacion"><span style="font-size: 7px;">>&nbsp;</span>DNI</div>
+            <div class="Left AnchoDiv Margin"><input type="text" name="DNI" value="" /></div>
+            <div class="Clr"></div>
+            <div class="Left AnchoDiv Margin Alineacion"><span style="font-size: 7px;">>&nbsp;</span>Email</div>
+            <div class="Left AnchoDiv Margin"><input type="text" name="email" value="" /></div>
+            <div class="Clr"></div>
+            <div class="Left AnchoDiv Margin Alineacion"><span style="font-size: 7px;">>&nbsp;</span>Fecha Nacimiento<br/><span class="GrisChico" style="font-size: 9px;">Ej: dd/mm/aaaa</span></div>
+            <div class="Left AnchoDiv Margin"><input type="text" name="fechanacimiento" value="" /></div>
+            <div class="Clr"></div>
+        </div>
+        <div class="Left" style="width:347px;">
+            <div class="Left AnchoDiv Margin Alineacion"><span style="font-size: 7px;">>&nbsp;</span>Provincia</div>
+            <div class="Left AnchoDiv Margin"><select name="provincia">
+                    <option value="">Seleccione una Provincia</option>
+                    <?php
+                        foreach($ArProvincias as $Provincia){
+                            ?>
+                            <option value="<?php echo $Provincia['id']?>"><?php echo htmlentities(utf8_decode($Provincia["provincia"]))?></option>
+                            <?php
+                        }
+                    ?>
+                </select></div>
+            <div class="Clr"></div>    
+            <div class="Left AnchoDiv Margin Alineacion"><span style="font-size: 7px;">>&nbsp;</span>Ciudad/Localidad</div>
+            <div class="Left AnchoDiv Margin"><input type="text" name="localidad" value="" /></div>
+            <div class="Clr"></div>
+            <div class="Left AnchoDiv Margin Alineacion"><span style="font-size: 7px;">>&nbsp;</span>Telefono</div>
+            <div class="Left AnchoDiv Margin"><input type="text" name="telefono" value="" /></div>
+            <div class="Clr"></div>
+            <div class="Left AnchoDiv Margin Alineacion"><span style="font-size: 7px;">>&nbsp;</span>Contrase&ntilde;a</div>
+            <div class="Left AnchoDiv Margin"><input type="password" name="clave" value="" /></div>
+            <div class="Clr"></div>
+            <div class="Left AnchoDiv Margin Alineacion"><span style="font-size: 7px;">>&nbsp;</span>Confirmar Contrase&ntilde;a</div>
+            <div class="Left AnchoDiv Margin"><input type="password" name="reclave" value="" /></div>
+            <div class="Clr"></div>
+            <div class="Clr"></div>
+            <div class="Margin" style="text-align: right" ><input type="submit" /></div>
+        </div>
+        <div class="Clr"></div>
+   </div>
+</form>

@@ -1,0 +1,45 @@
+<?php 
+    if (isset($First) && $First == true){
+?>
+<script>PopUp("<?php echo CESIS::$ROOT; ?>Home/MensOKReg",true);</script>
+<?php
+    }
+?>
+<!--<div class="PosicionAbsoluta" style="left: 25px;top:260px;"><a href="<?php echo CESIS::$ROOT; ?>Agenda/" target="_self"><img src="<?php echo CESIS::$ROOT; ?>img/encontranos.png" border="0"/></a></div>-->
+<div class="AnchoContenedor Centrar">
+    <div id="ListaProy">
+        <div class="Proyecto">
+            <?php if($Proyecto[0]['Estado'] > 2){?>
+            <div style="position: absolute; right: 20px; top: 10px; width:200px">
+                <!--a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode('http://www.openapp.com.ar/Proyectos/Ver/'.$Proyecto[0]['key']);?>" target="_blank"><img src="<?php echo CESIS::$ROOT; ?>img/ico_face.png"/></a-->
+                <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fopenapp.com.ar%2FProyectos%2FVer%2F<?php echo $Proyecto[0]['key']; ?>&amp;send=false&amp;layout=button_count&amp;width=150&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=trebuchet+ms&amp;height=90" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:30px;" allowTransparency="true" class="FacebookPlugin"></iframe>
+                <!--img src="<?php echo CESIS::$ROOT; ?>img/ico_twitter.png"/-->
+                <br/>
+                <div style>
+                    <iframe scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/tweet_button.html#_=1322683800780&amp;count=horizontal&amp;counturl=<?php echo 'http://www.openapp.com.ar/Proyectos/Ver/'.$Proyecto[0]['key'];?>&amp;id=twitter_tweet_button_2&amp;lang=en&amp;original_referer=http%3A%2F%2Fwww.openapp.com.ar%2F&amp;text=<?php echo str_replace('+','%20',urlencode ('Doy un voto por este proyecto de OpenApp :: '.$Proyecto[0]['Nombre']));?>&amp;url=<?php echo urlencode($Proyecto[0]['ShortUri']); ?>&amp;via=OpenApp_Arg" class="twitter-share-button twitter-count-horizontal" style="position:absolute; right:-30px; top:0px; height:20px; width:110px"  title="Twitter For Websites: Tweet Button"></iframe>
+                    
+                    
+                    <!--a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php echo $Proyecto[0]['ShorUri']; ?>" data-text="Doy un voto por este proyecto de OpenApp :: <?php echo $Proyecto[0]['Nombre'];?>" data-count="horizontal" data-via="OpenApp_Arg" data-lang="es">Twittear</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script-->
+                </div>
+            </div>
+            <?php
+                }
+            ?>
+            <div class="ProyectTitle"><img src="<?php echo CESIS::$ROOT; ?>img/indicador_proyecto.png"/><span class="Resaltar">Proyecto: <?php echo $Proyecto[0]['Nombre']; ?></span></div>
+            <div>
+                <div class="Left Col1">
+                    <?php if(isset($Proyecto[0]['Logo']) AND !is_null($Proyecto[0]['Logo']) AND $Proyecto[0]['Logo'] != ""){?>
+                        <img src="<?php echo CESIS::$ROOT; ?>archivos/logos/<?php echo $Proyecto[0]['Logo']; ?>" width="122" align="top" />
+                    <?php }else{ ?>
+                        <img src="<?php echo CESIS::$ROOT; ?>img/sin_imagen_chica.png" width="122" align="top"/>
+                    <?php } ?>
+                </div>
+                <div class="Left Col2">
+                    <span class="Resaltar">Descripci&oacute;n de la idea</span>
+                    <p><?php echo nl2br($Proyecto[0]['DescripcionDetallada']); ?></p>
+                </div>
+                <div class="Clr">&nbsp;</div>
+            </div>
+        </div>
+    </div>
+</div>

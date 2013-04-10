@@ -1,0 +1,12 @@
+<form action="#" method="post" onSubmit="ValidarFormAjax('<?php echo CESIS::$ROOT; ?>Home/Logeate/',this,MensOKLogin,MensErrorLogin);return false;">
+     <div class="CLogin" style="background-color:#000000;padding: 20px;text-align: left;">
+        <div class="Contenedor">
+            <div><img src="<?php echo CESIS::$ROOT; ?>img/mail.png"/></div>
+            <div class="Margin"><input type="text" name="user" validar="rq" value="" /></div>
+            <div><img src="<?php echo CESIS::$ROOT; ?>img/contrasena.png"/></div>
+            <div class="Margin"><input type="password" name="pass" validar="rq" value="" /></div>
+            <div class="PunteroCursor" src="<?php echo CESIS::$ROOT; ?>img/x.png" style="font-size:11px; font-weight: bold; color:#FFF;margin-top: 5px;" onclick="PopUp('<?php echo CESIS::$ROOT; ?>Home/FormOClave',true);Effect.Squish('Form');" >Olvid&eacute; mi contrase&ntilde;a</div>
+            <div><input type="submit"/></div>
+       </div>
+   </div>
+</form>

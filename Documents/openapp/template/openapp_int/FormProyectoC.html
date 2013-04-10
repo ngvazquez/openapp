@@ -1,0 +1,261 @@
+<!--<div class="PosicionAbsoluta" style="left: 25px;top:260px;"><a href="<?php echo CESIS::$ROOT; ?>Agenda/" target="_self"><img src="<?php echo CESIS::$ROOT; ?>img/encontranos.png" border="0"/></a></div>-->
+<div class="Centrar AnchoContenedor Transparente ProyectoMarBot">
+    <div class="FormProyecto">
+        <div><img src="<?php echo CESIS::$ROOT; ?>img/CargaTuProyecto.png" /></div>
+        <div class="FormProyectoPasos"><img src="<?php echo CESIS::$ROOT; ?>img/PasoSegundoA.png" /></div>      
+                    <?php 
+                    if($NoLogeado){
+                        if($Take){
+                    ?>
+<form action="<?php echo CESIS::$ROOT; ?>Home/LogeateExt/<?php echo $Key; ?>" method="post" >
+     <div class="CLogin" style="padding: 20px;">
+        <div class="Contenedor">
+            <div><img src="<?php echo CESIS::$ROOT; ?>img/mail.png"/></div>
+            <div class="Margin"><input type="text" name="user" value="" /></div>
+            <div><img src="<?php echo CESIS::$ROOT; ?>img/contrasena.png"/></div>
+            <div class="Margin"><input type="password" name="pass" value="" /></div>
+            <div class="PunteroCursor" src="<?php echo CESIS::$ROOT; ?>img/x.png" style="font-size:11px; font-weight: bold; color:#FFF;margin-top: 5px;" onclick="PopUp('<?php echo CESIS::$ROOT;?>Home/FormOClave',true);Effect.Squish('Form');" >Olvid&eacute; mi contrase&ntilde;a</div>
+            <div><input type="submit"/></div>
+       </div>
+   </div>
+</form>
+                    <?php
+                        }elseif(openapp::isLogin()){
+                    ?>
+<form action="#" method="post" onSubmit="javascript:if(Validar(this)){SubmitForm('<?php echo CESIS::$ROOT; ?>Home/Postularme/',this,MensOKProy,MensErrorProy);}return false;">
+    
+    <div class="CProyecto">
+        <div class="Contenedor">
+            <div><img src="<?php echo CESIS::$ROOT; ?>img/tit_categoria.png"/></div>
+            <div> 
+                <select name="categoria" validar="rq">
+                    <option value="">Seleccione una Categor&iacute;a</option>
+                    <option value="1">Aplicaciones PYMES</option>
+                    <option value="2">Entretenimiento y educaci&oacute;n</option>
+                    <option value="3">Aplicaciones M&oacute;viles</option>
+                 </select>
+            </div>
+            <div><img src="<?php echo CESIS::$ROOT; ?>img/proyecto.png"/></div>
+            <div class="Margin"><input type="text" name="nombre" value="" validar="rq"/></div>
+            <div><img src="<?php echo CESIS::$ROOT; ?>img/descripcion.png"/></div>
+            <div class="Margin"><textarea name="descripcion" validar="rq"></textarea></div>
+            <div><input type="submit"/></div>
+       </div>
+   </div>
+</form>
+                    <?php
+                    }else{
+                    ?>
+        <form class="Enviar" action="#" method="post" onSubmit="javascript:if(Validar(this)){SubmitForm('<?php echo CESIS::$ROOT; ?>Home/Postularme/',this,MensOKProy,MensErrorProy,MensUsuarioExiste);return false;}return false;">
+            <?php if (isset($RefMedio)){?>
+            <input type="hidden" value="<?php echo $RefMedio;?>" name="RefMedio"/>
+            <?php }?>
+            <div class="CProyecto">
+                <div class="Contenedor">
+                    <p style="font-size: 11px;">Si ya est&aacute;s registrado<br />logueate haciendo <a href="#" onClick="PopUp('<?php echo CESIS::$ROOT; ?>Home/FormLogin/', true);return false;" style="color:#FFF;text-decoration: none;"><b>click aqu&iacute;</b></a><br /></p>
+                    <div><img src="<?php echo CESIS::$ROOT; ?>img/tit_nombre.png"/></div>
+                    <div class="Margin"><input type="text" name="user_nombre" value="" validar="rq"/></div>
+                    <div><img src="<?php echo CESIS::$ROOT; ?>img/tit_apellido.png"/></div>
+                    <div class="Margin"><input type="text" name="user_apellido" value="" validar="rq"/></div>
+                    <div><img src="<?php echo CESIS::$ROOT; ?>img/tit_mail.png"/></div>
+                    <div class="Margin"><input type="text" name="user_mail" value="" validar="rq::mail"/></div>
+                    <div><img src="<?php echo CESIS::$ROOT; ?>img/tit_telefono.png"/></div>
+                    <div class="Margin"><input type="text" name="user_telefono" value="" validar="rq::numero"/></div>
+                    <div><img src="<?php echo CESIS::$ROOT; ?>img/tit_categoria.png"/></div>
+                    <div> 
+                        <select name="categoria" validar="rq">
+                            <option value="">Seleccione una Categor&iacute;a</option>
+                            <option value="1">Pymes</option>
+                            <option value="2">Entretenimiento y educaci&oacute;n</option>
+                            <option value="3">M&oacute;viles</option>
+                         </select>
+                    </div>
+                    <div><img src="<?php echo CESIS::$ROOT; ?>img/proyecto.png"/></div>
+                    <div class="Margin"><input type="text" name="proy_nombre" value="" validar="rq"/></div>
+                    <div><img src="<?php echo CESIS::$ROOT; ?>img/descripcion.png"/></div>
+                    <div class="Margin"><textarea name="proy_descripcion" validar="rq"></textarea></div>
+                    <div><input type="checkbox" name="terminos" style="width:auto;" validar="rq"/><a href="<?php echo CESIS::$ROOT; ?>BasesCondiciones" target="_blank"><img src="<?php echo CESIS::$ROOT; ?>img/tit_aceptoterminos.png" border="0" /></a></div>
+                    <div><button type="submit"></button></div>
+
+               </div>
+           </div>
+        </form>
+                <?php
+                }
+                }
+                ?>
+        <div class="FormProyectoPasos"><img src="<?php echo CESIS::$ROOT; ?>img/PasoSegundoB.png" /></div>
+        <?php
+            if(!$NoLogeado){
+        ?>
+        <form class="Enviar" action="<?php echo CESIS::$ROOT; ?>Proyectos/Actualizar" method="post" enctype="multipart/form-data" Onsubmit="return Validar(this);" >
+            <input type="hidden" name="idKey" value="<?php echo $Key ?>" />
+            <table>
+                <?php if (is_null($Responsable->getDNI())){?>
+                
+                    <tr>
+                        <td><img src="<?php echo CESIS::$ROOT; ?>img/dni.png" /></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" value="" name="R_DNI" validar="rq::numero"/></td>
+                    </tr>
+                    <tr>
+                        <td><img src="<?php echo CESIS::$ROOT; ?>img/direccion.png" /></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" value="" name="R_Direccion" validar="rq"/></td>
+                    </tr>   
+                    <tr>
+                        <td><img src="<?php echo CESIS::$ROOT; ?>img/codigo-postal.png" /></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" value="" name="R_CodPostal" validar="rq::numero"/></td>
+                    </tr> 
+                    <tr>
+                        <td><img src="<?php echo CESIS::$ROOT; ?>img/localidad.png" /></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" value="" name="R_Localidad" validar="rq"/></td>
+                    </tr> 
+                    
+                <?php } ?>
+                
+                <tr>
+                    <td><img src="<?php echo CESIS::$ROOT; ?>img/provincias.png" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <select name="R_Provincia" validar="rq">
+                            <?php foreach($Provincias as $Provincia){ ?>
+                                <option value="<?php echo $Provincia['id']; ?>">
+                                    <?php echo htmlentities($Provincia['provincia']); ?>
+                                </option>
+                            <?php } ?>
+                        </select>  
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="<?php echo CESIS::$ROOT; ?>img/categoria.png" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <select name="Categoria" disabled="true">
+                            <?php foreach($ArCategorias as $Categoria){ ?>
+                                <option value="<?php echo $Categoria['id']; ?>"
+                                <?php if ($Proyectos->getCategoria() == $Categoria['id']){ ?>
+                                selected="selected">
+                                <?php }else{ ?>
+                                    >
+                                <?php } ?>
+                                <?php echo $Categoria['nombre']; ?>
+                                </option>
+                            <?php } ?>
+                        </select>      
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="<?php echo CESIS::$ROOT; ?>img/subcategoria.png" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <table cellpacing="0">
+                            <tr>
+                            <?php 
+                                $i = 0;
+                                foreach($SubCategorias as $SubCategoria){
+                                $i ++;
+                            ?>
+                                <?php 
+                                    if ($i == 3) { 
+                                     $i = 0;
+                                ?>
+                                    <td><input type="checkbox" value="<?php echo $SubCategoria['id']; ?>" name="subcategoria[]" validar="multiplechoice"/><?php echo htmlentities($SubCategoria['nombre']); ?></td>
+                                    </tr><tr>
+                                 <?php }else{ ?>
+                                 <td><input type="checkbox" value="<?php echo $SubCategoria['id']; ?>" name="subcategoria[]" validar="multiplechoice"/><?php echo htmlentities($SubCategoria['nombre']); ?></td>
+                                 <?php } ?>  
+                            <?php } ?>
+                            </tr>
+                       </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="<?php echo CESIS::$ROOT; ?>img/proyecto.png" /></td>
+                </tr>
+                <tr>
+                    <td><input type="text" value="<?php echo $Proyectos->getNombre();?>" name="nombre" validar="rq"/></td>
+                </tr>
+                <tr>
+                    <td><img src="<?php echo CESIS::$ROOT; ?>img/avance_proyec.png" /></td>
+                </tr>
+                <tr>
+                    <td><select name="gradoavance" validar="rq">
+                           <option value="">Seleccione el Nivel de Avance</option>
+                        <?php 
+                            foreach($LisGDA as $GDA){
+                           ?>
+                           <option value="<?php echo $GDA['id']; ?>"><?php echo $GDA['Nombre']; ?></option>
+                           <?php
+                            }
+                        ?>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td><img src="<?php echo CESIS::$ROOT; ?>img/cant_socios.png" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <select type="text" name="CantSocios" Onchange="CambiarInput(this.value)" validar="rq">
+                            <option value="0" selected="selected">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="14">15</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="Socios">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="<?php echo CESIS::$ROOT; ?>img/evaluacion_competencia.png" /></td>
+                </tr>
+                <tr>
+                    <td><textarea name="competencia" cols="25" rows="15" validar="rq"></textarea></td>
+                </tr>
+                <tr>
+                    <td><img src="<?php echo CESIS::$ROOT; ?>img/descripcion_detallada.png" /></td>
+                </tr>
+                <tr>
+                    <td><textarea  name="descripcion" cols="25" rows="15" validar="rq"></textarea></td>
+                </tr>
+                <tr>
+                    <td><img src="<?php echo CESIS::$ROOT; ?>img/subir_logo.png" /></td>
+                </tr>
+                <tr>
+                    <td><input type="file" name="logo" Onchange="VerificarExtencion(this, 'Logo');"/></td>
+                </tr>
+                <tr>
+                    <td><button type="submit"></button></td>
+                </tr>
+            </table>
+        </form>
+        <?php
+            }
+        ?>
+    </div>
+</div>

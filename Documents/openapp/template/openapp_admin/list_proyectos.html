@@ -1,0 +1,853 @@
+<div id="Listado" class="AnchoContenedor Centrar Alinear PosicionRelativa">
+    <?php 
+    if(isset($_SESSION["Reporte"]) AND $_SESSION["Reporte"] != ""){
+    ?>
+        <script type="text/javascript">
+            window.alert("<?php echo $_SESSION['Reporte']; ?>");
+        </script>
+    <?php
+        $_SESSION["Reporte"]= ""; 
+    }
+    ?>
+    
+        <ul id="tabs">
+            <?php
+            if(isset($VerPI) AND $VerPI){
+            ?>
+            <li>
+                <div <?php if(GET::Take('Id')== 1) echo "style='background-color:#7AB800'"; ?>><a href="/admin/Proyectos/Listado/1"><h3 style="color:black">Proyecto Incompletos</h3></a></div>
+            </li>
+            <?php
+            }
+            ?>
+            <li><div <?php if(GET::Take('Id')== 2) echo "style='background-color:#7AB800'"; ?>>
+                <?php 
+                if(isset($VerPPM) AND $VerPPM){
+                ?>
+                <a href="/admin/Proyectos/Listado/2"><h3 style="color:black">Para Moderar</h3></a>
+                <?php
+                }else{
+                ?>
+                <h3 style="color:black">Para Moderar</h3>
+                <?php
+                }
+                ?>
+            </div></li>
+            <li><div <?php if(GET::Take('Id')== 3) echo "style='background-color:#7AB800'"; ?>>
+                <?php 
+                if(isset($VerPA) AND $VerPA){
+                ?>
+                <a href="/admin/Proyectos/Listado/3"><h3 style="color:black">Aprobados</h3></a>
+                <?php
+                }else{
+                ?>
+                <h3 style="color:black">Aprobados</h3>
+                <?php
+                }
+                ?>
+            </div></li>
+            <li><div <?php if(GET::Take('Id')== 0) echo "style='background-color:#7AB800'"; ?>>
+                <?php 
+                if(isset($VerRechazados) AND $VerRechazados){
+                ?>
+                <a href="/admin/Proyectos/Listado/0"><h3 style="color:black">Rechazados</h3></a>
+                <?php
+                }else{
+                ?>
+                <h3 style="color:black">Rechazados</h3>
+                <?php
+                }
+                ?>
+            </div></li>
+            <li><div <?php if(GET::Take('Id')== 4) echo "style='background-color:#7AB800'"; ?>>
+                <?php 
+                if(isset($Ver180) AND $Ver180){
+                ?>
+                <a href="/admin/Proyectos/Listado/4"><h3 style="color:black">180</h3></a>
+                <?php
+                }else{
+                ?>
+                <h3 style="color:black">180</h3>
+                <?php
+                }
+                ?>
+            </div></li>
+            <li><div <?php if(GET::Take('Id')== 5) echo "style='background-color:#7AB800'"; ?>>
+                <?php 
+                if(isset($Ver60) AND $Ver60){
+                ?>
+                <a href="/admin/Proyectos/Listado/5"><h3 style="color:black">60</h3></a>
+                <?php
+                }else{
+                ?>
+                <h3 style="color:black">60</h3>
+                <?php
+                }
+                ?>
+            </div></li>
+            <li><div <?php if(GET::Take('Id')== 6) echo "style='background-color:#7AB800'"; ?>>
+                <?php 
+                if(isset($VerGanadores) AND $VerGanadores){
+                ?>
+                <a href="/admin/Proyectos/Listado/6"><h3 style="color:black">Ganadores</h3></a>
+                <?php
+                }else{
+                ?>
+                <h3 style="color:black">Ganadores</h3>
+                <?php
+                }
+                ?>
+            </div></li>
+        </ul>
+        <div class="FiltrarClase">
+            <p class="FiltrarPorTit">Filtrar por:</p>
+            <div style="margin:40px 0 0 10px">
+                    <form method="POST" id="FormFiltro">
+                        <div>
+                            <div class="FiltrarPorCat">
+                                <p class="FiltrarPor">Categor&iacute;a</p>
+                                <div>
+                                    <select class="SelctFiltro" id="FormFiltroCate">
+                                      <option value="" selected="selected">Indistinto</option>
+                                      <option value="1" <?php if($Catego == 1){ ?> selected='selected' <?php } ?> >Pymes</option>
+                                      <option value="2" <?php if($Catego == 2){ ?> selected='selected' <?php } ?> >Entretenimiento y educación</option>
+                                      <option value="3" <?php if($Catego == 3){ ?> selected='selected' <?php } ?> >Móviles</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <?php if(GET::Take('Id')== 3){ ?>
+                            <div class="FiltrarPorCat">
+                                <p class="FiltrarPor">Estado</p>
+                                    <select class="SelctFiltro" id="FormFiltroEstado" style="display: block">
+                                          <option value="" selected="selected">Indistinto</option>
+                                          <option value="7" <?php if($CodEstado == 7){ ?> selected='selected' <?php } ?> >Estado 1</option>
+                                          <option value="8" <?php if($CodEstado == 8){ ?> selected='selected' <?php } ?> >Estado 2</option>
+                                          <option value="9" <?php if($CodEstado == 9){ ?> selected='selected' <?php } ?> >Estado 3</option>
+                                          <option value="10" <?php if($CodEstado == 10){ ?> selected='selected' <?php } ?> >Estado 4</option>
+                                    </select>
+                            </div>
+                            <?php } ?>
+                            <div class="FiltrarPorCat">
+                                <p class="FiltrarPorCodigo">C&oacute;digo del Proyecto</p>
+                                <input class="SelctFiltro" value="<?php echo $CodValor; ?>" id="SelectFiltroCod" style="display: block"/>
+                            </div>
+                            <div class="FiltrarPorCat" style="padding:0 0 0 20px; width: 100px">
+                                <button onclick="FiltroEnviar(<?php  echo GET::Take('Id')?>)" class="SelctFiltro" id="EnviarDatos" style="display: block; width: 80px; height: 22px; margin: 28px 0pt 0pt;" >Filtrar</button>
+                            </div>
+                            <div class="FiltrarReset">
+                                <button type="button" onclick="ResetFiltro(<?php  echo GET::Take('Id')?>)" class="SelctFiltro" id="EnviarDatos" style="display: block; width: 80px; height: 22px; margin: 28px 0pt 0pt;" >Resetear</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+        </div>
+        <?php
+        if(GET::Take('Id') == '1'){
+        ?>    
+        <div class="panel PosicionRelativa" id="tab0">
+            <table width="800">
+                <thead style="background-color: #7AB800">
+                    <tr>
+                        <th>Proyecto</th>
+                        <th>Responsable</th>
+                    </tr>
+                </thead>
+                <tbody>
+            <?php
+            
+            if ((count($ListPPM)) > 0){
+                foreach($ListPI as $Proyecto){
+                    $Responsable = new MResponsables();
+                    $Responsable->Abrir($Proyecto["Responsable"]);
+            ?>
+                    <tr style="background-color: #C8D33B;border-bottom: 1px solid #EE9A11">
+                        <td class="HoverProy"><a onclick="PopUp('<?php echo CESIS::$ROOT; ?>admin/Proyectos/ResumentProyecto/<?php echo $Proyecto['id'];?>');" style="cursor: pointer; color: #000"><?php echo $Proyecto["Nombre"];?></a></td>
+                        <td><?php echo $Responsable->getNombre(); ?></td>
+                        
+                   <?php  
+                        }
+                   ?>
+                        </tr>
+                        <tr class="EXpo">
+                            <th>&nbsp;</th>
+                            <th style="min-width: 105" colspan="2" class="Exportar"><a style="color:#fff" href="/admin/Proyectos/Export/<?php echo GET::Take('Id') ?>" target="_self">Descargar</a></th>
+                        </tr>
+                   <?php
+                    }else{
+                         echo "<td colspan='2' class='NoseEnocn'>No se han encontrado resultados con su filtro</td>
+                        </tr>";
+                  }
+                   ?>
+                </tbody>
+            </table>
+        </div>
+        <?php
+        }
+        ?>        <?php
+        if(GET::Take('Id') == '2'){
+        ?> 
+        <div class="panel PosicionRelativa" id="tab1">
+            <form action="<?php echo CESIS::$ROOT; ?>admin/Proyectos/Aceptar/" method="POST" id="FormCkack">
+                <div class="PosicionAbsoluta" style="left: 690px; top: -30px;"><input type="submit" onclick="return window.confirm('Esta seguro que desea aceptar estos proyectos?\n(Tenga en cuenta que se enviara un mail a los responsables avisando el cambio de estado del proyecto)')" value="Aceptar"/></div>
+                <div class="PosicionAbsoluta" style="left: 806px; top: -30px;"><input type="button" onclick="Valickeck(this.form)" value="Rechazar"/></div>
+                <table widht="644">
+                    <thead style="background-color: #7AB800">
+                        <tr>
+                            <th widht="42" style="min-width: 42px">#</th>
+                            <th style="text-align:center; width: 32px; min-width: 32px"><input type="checkbox" name="checkbox" onclick="SelectAllCheck(this, 'id[]')" id="SelectALL" /></th>
+                            <th style="min-width: 105">C&oacute;digo</th>
+                            <th style="min-width: 105">Fecha</th>
+                            <th style="min-width: 105">Proyecto</th>
+                            <th style="min-width: 137">Categor&iacute;a</th>
+                            <th style="min-width: 105">Responsable</th>
+                            <th style="min-width: 105">Provincia</th>
+                            <th style="min-width: 131">Mail</th>
+                            <th style="min-width: 105">Tel&eacute;fono</th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                <?php
+                $ContDesa = 1;
+                $Cont = 1;
+                $ContEstado = 1;
+                
+                    $EstilosBlock = "background-color:red;text-decoration: line-through;";
+                    
+                    if ((count($ListPPM)) > 0){  
+                        foreach($ListPPM as $Proyecto){
+                            $Responsable = new MResponsables();
+                            $Responsable->Abrir($Proyecto["Responsable"]);
+
+
+                            $EstiloExtra = "";
+                            if($Proyecto["Estado"] == 0){
+                                $EstiloExtra = $EstilosBlock;
+
+                            }      
+                ?>
+                        <tr id="Tr<?php echo $Proyecto['id']; ?>" style="background-color: #C8D33B;border-bottom: 1px solid #EE9A11; text-decoration: none;">
+                            <td widht='20'><?php
+                                if ($Cont > $CantXPag){
+                                    $Cont = 1;
+                                }
+                                echo $Cont;
+
+                                ?></td>
+                            <td widht='20' style="<?php echo $EstiloExtra; ?>"><input type="checkbox" name="id[]" id="checkbox"  value="<?php echo $Proyecto['id']; ?>"/></td>
+                            <td widht='151' style="<?php echo $EstiloExtra; ?>"><?php echo $Proyecto["key"];?></td>
+                            <td widht="151" style="<?php echo $EstiloExtra; ?>"><?php echo $Proyecto["ShowFecha"]; ?></td>
+                            <td widht='151' style="<?php echo $EstiloExtra; ?>" class="HoverProy"><a onclick="PopUp('<?php echo CESIS::$ROOT; ?>admin/Proyectos/ResumentProyecto/<?php echo $Proyecto['id'];?>');" style="cursor: pointer; color: #000"><?php echo $Proyecto["Nombre"];?></a></td>
+                            <td widht='151' style="<?php echo $EstiloExtra; ?>"><?php                            
+                                $Categoria = new MCategorias();
+                                $Categoria->abrir($Proyecto["Categoria"]);
+                                echo $Categoria->getNombre();
+                                ?>
+                            </td>
+                            <td widht="151" style="<?php echo $EstiloExtra; ?>"><?php echo $Responsable->getNombre(); ?></td>
+                            <td widht="151" style="<?php echo $EstiloExtra; ?>"><?php
+                                $MProvincia = new MProvincias();
+                                $MProvincia->abrir($Responsable->getProvincia());
+                                echo $MProvincia->getProvincia(); ?></td>
+                            <td class="HoverProy" widht="151" style="<?php echo $EstiloExtra; ?>"><a href="mailto:<?php echo $Responsable->getEmail(); ?>" style="color:#000000;"><?php echo $Responsable->getEmail(); ?></a></td>
+                            <td widht="151" style="<?php echo $EstiloExtra; ?>"><?php echo $Responsable->getTelefono(); ?></td>
+                            
+                        
+                   <?php
+                         $Cont ++;    
+                        }
+                   ?>
+                        </tr>
+                        <tr class="EXpo">
+                            <th widht="42" style="min-width: 42px">&nbsp;</th>
+                            <th style="text-align:center; width: 32px; min-width: 32px">&nbsp;</th>
+                            <th style="min-width: 105">&nbsp;</th>
+                            <th style="min-width: 105">&nbsp;</th>
+                            <th style="min-width: 137">&nbsp;</th>
+                            <th style="min-width: 105">&nbsp;</th>
+                            <th style="min-width: 105">&nbsp;</th>
+                            <th style="min-width: 131">&nbsp;</th>
+                            <th style="min-width: 105" colspan="9" class="Exportar"><a style="color:#fff" href="/admin/Proyectos/Export/<?php echo GET::Take('Id') ?>" target="_self">Descargar</a></th>
+                        </tr>
+                   <?php
+                    }else{
+                         echo "<td colspan='9' class='NoseEnocn'>No se han encontrado resultados con su filtro</td>
+                        </tr>";
+                  }
+                   ?>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+            <!--Paginador-->
+            <?php
+            $CantRows = count($ListPPM);
+               if ($CantPag > 1 ){
+               
+            ?>
+                <div><div style="float:left;font-family:Georgia,Arial;color:#ffffff;font-size:15px;">P&aacute;ginas
+                <?php
+                $i=0;
+                while ($i<$CantPag){
+                    $i++;
+                    if($Pag==$i){
+                ?>
+                        - <span style="font-size:17px;font-weight:bold"><?php echo $i ;?></span>
+                    <?php
+                    }else{
+                        if($_SERVER["REQUEST_URI"] != '/admin/Proyectos/Listado/2'){
+                    ?>
+
+                        - <a onclick="PaginaList(<?php echo $i ;?>,'<?php echo CESIS::$ROOT; ?>admin/Proyectos/Listado/2/<?php if ($Catego == ''){ ?>Indistinto<?php }else{ echo $Catego;} ?>/<?php if ($CodValor == ''){ ?>Indistinto<?php }else{ echo $CodValor;} ?>');" style="cursor: pointer;"><?php echo $i ;?></a>
+                    <?php
+                        }else{
+                    ?>    
+                        - <a onclick="PaginaList(<?php echo $i ;?>,'<?php echo CESIS::$ROOT; ?>admin/Proyectos/Listado/2');" style="cursor: pointer;"><?php echo $i ;?></a>
+                    <?php
+                    }
+                        
+                    }
+                    ?>
+                <?php
+                
+                }
+                ?>
+                </div><div style="clear:both;"></div></div>
+            <?php
+            }
+            ?>
+        <?php
+        }
+        
+        ?>
+        </div>
+        <?php
+        if(GET::Take('Id') == '3'){
+        ?>     
+        <div class="panel PosicionRelativa" id="tab2">
+            <?php if (isset($CantEstado4) AND !$CantEstado4){ ?><div style="color: rgb(255, 255, 255); position: absolute; font-size: 14px; top: -20px; right: 500px;">(Faltan <span style="font-weight: bold"><?php echo $LimitFaltante ?></span>)</div><?php } ?>
+            <form  method="POST" id="Form180">
+                <!--<div style="position:fixed; right: 140px; top: 45px">
+                    <?php if (isset($CantEstado4) AND !$CantEstado4){ ?>
+                    <button type="submit" onclick="return window.confirm('Esta seguro que desea que estos proyectos pasen a la siguiente etapa?\n(Tenga en cuenta que se enviara un mail a los responsables avisando el cambio de estado del proyecto)');">Pasar a 180<br />(Faltan <?php echo $LimitFaltante ?>)</button>
+                    <?php } ?>
+                </div>-->
+                <table>
+                    <thead style="background-color: #7AB800">
+                        <tr>
+                            <th widht="40" style="min-width: 40px">#</th>
+                        <!--<th  style="text-align:center; width: 30px; min-width: 30px"><input type="checkbox" onclick="SelectAllCheck(this, 'id[]')" id="SelectALL" /></th>-->
+                            <th>Codigo</th>
+                            <th>Fecha</th>
+                            <th>Proyecto</th>
+                            <th>Categor&iacute;a</th>
+                            <th>Responsable</th>
+                            <th>Provincia</th>
+                            <th>Mail</th>
+                            <th>Tel&eacute;fono</th>
+                            <th>Nuevos estados</th>
+                            <th>Examinar/Descargar</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                <?php
+                $Cont = 1;
+                
+                if ((count($ListPA)) > 0){ 
+                
+                    foreach($ListPA as $Proyecto){
+                        $Responsable = new MResponsables();
+                        $Responsable->Abrir($Proyecto["Responsable"]);
+                        
+                        if (isset($CantEstado4) AND $CantEstado4 AND $Proyecto["Estado"] == 4){
+                            $Estilo = 'style="background-color: #fefefe;border-bottom: 1px solid #EE9A11"';
+                        }else{
+                            $Estilo = 'style="background-color: #C8D33B;border-bottom: 1px solid #EE9A11"';
+                        }
+                ?>
+                        <tr <?php echo $Estilo; ?>>
+                            <td><?php echo $Cont;?></td>
+                        <!--<td><input type="checkbox" name="id[]" value="<?php echo $Proyecto['id']; ?>"/></td>-->
+                            <td><?php echo $Proyecto["key"];?></td>
+                            <td><?php echo $Proyecto["ShowFecha"]; ?></td>
+                            <td class="HoverProy"><a onclick="PopUp('<?php echo CESIS::$ROOT; ?>admin/Proyectos/ResumentProyecto/<?php echo $Proyecto['id'];?>');" style="cursor: pointer; color: #000"><?php echo $Proyecto["Nombre"];?></a></td>
+                            <td><?php                            
+                                $Categoria = new MCategorias();
+                                $Categoria->abrir($Proyecto["Categoria"]);
+                                echo $Categoria->getNombre();
+                                ?>
+                            </td>
+                            <td><?php echo $Responsable->getNombre(); ?></td>
+                            <td><?php 
+                                $MProvincia = new MProvincias();
+                                $MProvincia->Abrir($Responsable->getProvincia());
+                                echo $MProvincia->getProvincia(); ?></td>
+                            <td class="HoverProy"><a href="mailto:<?php echo $Responsable->getEmail(); ?>" style="color:#000000;"><?php echo $Responsable->getEmail(); ?></a></td>
+                            <td><?php echo $Responsable->getTelefono(); ?></td>
+                            <td>
+                                <?php
+                                    $EstadoProy = "x";
+                                    $EstadoProy7 = "";
+                                    $EstadoProy8 = "";
+                                    $EstadoProy9 = "";
+                                    $EstadoProy10 = "";
+                                    
+                                    if($Proyecto["Estado"] == 7){
+                                        $EstadoProy7 = "si";
+                                        $EstadoProy8 = $EstadoProy;
+                                        $EstadoProy9 = "<div onfocus='this.blur()'>".$EstadoProy."</div>";
+                                        $EstadoProy10 = "<div onfocus='this.blur()'>".$EstadoProy."</div>";
+                                    }elseif($Proyecto["Estado"] == 8){
+                                        $EstadoProy7 = "si";
+                                        $EstadoProy8 = "si";
+                                        $EstadoProy9 = $EstadoProy;
+                                        $EstadoProy10 = "<div onfocus='this.blur()'>".$EstadoProy."</div>";
+                                    }elseif($Proyecto["Estado"] == 9){
+                                        $EstadoProy7 = "si";
+                                        $EstadoProy8 = "si";
+                                        $EstadoProy9 = "si";
+                                        $EstadoProy10 = $EstadoProy;
+                                    }elseif($Proyecto["Estado"] == 10){
+                                        $EstadoProy7 = "si";
+                                        $EstadoProy8 = "si";
+                                        $EstadoProy9 = "si";
+                                        $EstadoProy10 = "si";
+                                    }   
+                                ?>
+                                <div style="width: 200px; position: relative" class="InstanciasAprob">
+                                    <div id="Estado_<?php echo $ContEstado;?>" style="width: 30px; float: left; cursor: pointer"><div onclick="CambiarDeEstadoProy(<?php echo $Proyecto['id'];?>,'Estado_<?php echo $ContEstado; $ContEstado++ ?>',<?php echo $ContEstado ?>,7,<?php echo $Cont ?>,<?php echo $Proyecto['Estado'] ?>)"><?php if($EstadoProy7 != ""){echo $EstadoProy7;}else{echo $EstadoProy;}; ?></div></div>
+                                    <div id="Estado_<?php echo $ContEstado;?>" style="width: 30px; float: left; cursor: pointer"><div onclick="CambiarDeEstadoProy(<?php echo $Proyecto['id'];?>,'Estado_<?php echo $ContEstado; $ContEstado++ ?>',<?php echo $ContEstado ?>,8,<?php echo $Cont ?>,<?php echo $Proyecto['Estado'] ?>)"><?php if($EstadoProy8 != ""){echo $EstadoProy8;}else{echo $EstadoProy;}; ?></div></div>
+                                    <div id="Estado_<?php echo $ContEstado;?>" style="width: 30px; float: left; cursor: pointer"><div onclick="CambiarDeEstadoProy(<?php echo $Proyecto['id'];?>,'Estado_<?php echo $ContEstado; $ContEstado++ ?>',<?php echo $ContEstado ?>,9,<?php echo $Cont ?>,<?php echo $Proyecto['Estado'] ?>)"><?php if($EstadoProy9 != ""){echo $EstadoProy9;}else{echo $EstadoProy;}; ?></div></div>
+                                    <div id="Estado_<?php echo $ContEstado;?>" style="width: 30px; float: left; cursor: pointer"><div onclick="CambiarDeEstadoProy(<?php echo $Proyecto['id'];?>,'Estado_<?php echo $ContEstado; $ContEstado++ ?>',<?php echo $ContEstado ?>,10,<?php echo $Cont ?>,<?php echo $Proyecto['Estado'] ?>)"><?php if($EstadoProy10 != ""){echo $EstadoProy10;}else{echo $EstadoProy;}; ?></div></div>
+                                    <?php if (isset($CantEstado4) AND !$CantEstado4){ ?><div style="cursor: pointer; width: 47px; float: right; margin: 0pt 15px 0pt 0pt;" onclick="CambiarA180(<?php echo $Proyecto['Estado'] ?>,<?php echo $Proyecto['id'];?>)">Aceptar</div><?php } ?>
+                                    <div style="clear: both;"></div>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="position: relative; width:158px">
+                                    <div class="HoverProy" style="float: left; color:#000"><a style="color:#000" href="javascript:PopUp('<?php echo CESIS::$ROOT; ?>admin/Proyectos/ExaminarArchivo/<?php echo $Proyecto['id'];?>/<?php echo $Proyecto['Nombre'];?>');">Subir Archivo</a></div>
+                                    <div class="HoverProy" style="float: left; margin: 0 0 0 15px; color: #000 ">
+                                        <?php 
+                                            if ($Proyecto["ArchivoAprobado"] == "" OR is_null($Proyecto["ArchivoAprobado"])){
+                                        ?>
+                                        <span>S/Cargar</span>
+                                        <?php
+                                            }else{
+                                        ?>
+                                        <a style="color:#000" href="<?php echo CESIS::$ROOT;?>admin/Proyectos/VerPdfAprov/<?php echo $Proyecto['ArchivoAprobado'];?>" target="_blank">Ver</a>
+                                        <?php
+                                            }
+                                        ?>
+                                    </div>
+                                    <div style="clear: both;"></div>
+                                </div>
+                            </td>
+                            
+                        
+                   <?php
+                         $Cont ++;    
+                        }
+                   ?>
+                        </tr>
+                        <tr class="EXpo">
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th colspan="10" class="Exportar"><a style="color:#fff" href="/admin/Proyectos/Export/<?php echo GET::Take('Id') ?>" target="_self">Descargar</a></th>
+                        </tr>
+                   <?php
+                    }else{
+                         echo "<td colspan='10' class='NoseEnocn'>No se han encontrado resultados con su filtro</td>
+                        </tr>";
+                  }
+                   ?>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        
+        <?php
+        }
+        ?>
+        
+        
+        <?php
+        if(GET::Take('Id') == '0'){
+        ?>    
+        <div class="panel PosicionRelativa" id="tab6">
+            <form action="<?php echo CESIS::$ROOT; ?>admin/Proyectos/Rechazar/" method="POST" id="FormMode">
+                <table>
+                    <thead style="background-color: #7AB800">
+                        <tr>
+                            <th widht="40" style="min-width: 40px">#</th>
+                            <th  style="text-align:center; width: 30px; min-width: 30px"><input type="checkbox" onclick="SelectAllCheck(this, 'id[]')" id="SelectALL" /></th>
+                            <th>Codigo</th>
+                            <th>Fecha</th>
+                            <th>Proyecto</th>
+                            <th>Categor&iacute;a</th>
+                            <th>Responsable</th>
+                            <th>Provincia</th>
+                            <th>Mail</th>
+                            <th>Tel&eacute;fono</th>                            
+                        </tr>
+                        <div class="PosicionAbsoluta" style="left: 741px; top: -30px;"><input type="button" onclick="ValickeckRecha(this.form)" value="Pasar a Moderar"/></div>
+                    </thead>
+                    <tbody>
+                <?php
+                $Cont = 1;
+                //var_dump($ListRechazados);die();
+                if ((count($ListRechazados)) > 0){ 
+                    foreach($ListRechazados as $Proyecto){
+                        $Responsable = new MResponsables();
+                        $Responsable->Abrir($Proyecto["Responsable"]);
+                        
+                        if (isset($CantEstado4) AND $CantEstado4 AND $Proyecto["Estado"] == 4){
+                            $Estilo = 'style="background-color: #fefefe;border-bottom: 1px solid #EE9A11"';
+                        }else{
+                            $Estilo = 'style="background-color: #C8D33B;border-bottom: 1px solid #EE9A11"';
+                        }
+                ?>
+                        <tr <?php echo $Estilo; ?>>
+                            <td><?php echo $Cont;?></td>
+                            <td><input type="checkbox" name="id[]" id="checkboxRacha" value="<?php echo $Proyecto['id']; ?>"/></td>
+                            <td><?php echo $Proyecto["key"];?></td>
+                            <td><?php echo $Proyecto["ShowFecha"]; ?></td>
+                            <td class="HoverProy"><a onclick="PopUp('<?php echo CESIS::$ROOT; ?>admin/Proyectos/ResumentProyecto/<?php echo $Proyecto['id'];?>');" style="cursor: pointer; color: #000"><?php echo $Proyecto["Nombre"];?></a></td>
+                            <td><?php                            
+                                $Categoria = new MCategorias();
+                                $Categoria->abrir($Proyecto["Categoria"]);
+                                echo $Categoria->getNombre();
+                                ?>
+                            </td>
+                            <td><?php echo $Responsable->getNombre(); ?></td>
+                            <td><?php 
+                                $MProvincia = new MProvincias();
+                                $MProvincia->Abrir($Responsable->getProvincia());
+                                echo $MProvincia->getProvincia(); ?></td>
+                            <td class="HoverProy"><a href="mailto:<?php echo $Responsable->getEmail(); ?>" style="color:#000000;"><?php echo $Responsable->getEmail(); ?></a></td>
+                            <td><?php echo $Responsable->getTelefono(); ?></td>
+                            
+                   <?php
+                         $Cont ++;    
+                        }
+                   ?>
+                        </tr>
+                        <tr class="EXpo">
+                            <th widht="40" style="min-width: 40px">&nbsp;</th>
+                            <th style="text-align:center; width: 30px; min-width: 30px">&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th colspan="9" class="Exportar"><a style="color:#fff" href="/admin/Proyectos/Export/<?php echo GET::Take('Id') ?>" target="_self">Descargar</a></th>
+                        </tr>
+                   <?php
+                    }else{
+                         echo "<td colspan='9' class='NoseEnocn' style='min-width: 0 none'>No se han encontrado resultados con su filtro</td>
+                        </tr>";
+                  }
+                   ?>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <?php
+        }
+        ?>
+        <?php
+        if(GET::Take('Id') == '4'){
+        ?>    
+        <div class="panel PosicionRelativa" id="tab3">
+            <form name="180" action="<?php echo CESIS::$ROOT; ?>admin/Proyectos/Aceptar60/" method="POST">
+                <div style="position:fixed; right: 140px; top: 45px">
+                    <?php if (isset($CantEstado5) AND !$CantEstado5){ ?>
+                    <button type="submit" onclick="return window.confirm('Esta seguro que desea que estos proyectos pasen a la siguiente etapa?\n(Tenga en cuenta que se enviara un mail a los responsables avisando el cambio de estado del proyecto)');">Pasar a 60<br />(Faltan <?php echo $LimitFaltante60 ?>)</button>
+                    <?php } ?>
+                </div>
+                <div style="position:fixed; right: 235px; top: 53px">
+                    <button onclick="SendMail(1,'id[]');return false;">Mail - Carga del instructivo</button>
+                </div>
+                <table>
+                    <thead style="background-color: #7AB800">
+                        <tr>
+                            <td widht="40" style="min-width: 40px">#</td>
+                            <th  style="text-align:center; width: 30px; min-width: 30px"><input type="checkbox" onclick="SelectAllCheck(this, 'id[]')" id="SelectALL" /></th>
+                            <th>Codigo</th>
+                            <th>Fecha</th>
+                            <th>Proyecto</th>
+                            <th>Categor&iacute;a</th>
+                            <th>Responsable</th>
+                            <th>Manual-1</th>
+                            <th>Envio de Mail</th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                <?php
+                    $Cont = 1;
+                    
+                    if ((count($List180)) > 0){ 
+                        foreach($List180 as $Proyecto){
+                            $Responsable = new MResponsables();
+                            $Responsable->Abrir($Proyecto["Responsable"]);
+
+                            if (isset($CantEstado5) AND $CantEstado5 AND $Proyecto["Estado"] == 5){
+                                $Estilo = 'style="background-color: #fefefe;border-bottom: 1px solid #EE9A11"';
+                            }else{
+                                $Estilo = 'style="background-color: #C8D33B;border-bottom: 1px solid #EE9A11"';
+                            }
+                ?>
+                        <tr <?php echo $Estilo; ?>>
+                            <td><?php echo $Cont;?></td>
+                            <td><input type="checkbox" name="id[]" value="<?php echo $Proyecto['id']; ?>"/></td>
+                            <td><?php echo $Proyecto["key"];?></td>
+                            <td><?php echo $Proyecto["ShowFecha"]; ?></td>
+                            <td class="HoverProy"><a onclick="PopUp('<?php echo CESIS::$ROOT; ?>admin/Proyectos/ResumentProyecto/<?php echo $Proyecto['id'];?>');" style="cursor: pointer; color: #000"><?php echo $Proyecto["Nombre"];?></a></td>
+                            <td><?php                            
+                                $Categoria = new MCategorias();
+                                $Categoria->abrir($Proyecto["Categoria"]);
+                                echo $Categoria->getNombre();
+                                ?>
+                            </td>
+                            <td><?php echo $Responsable->getNombre(); ?></td>
+                            <td>
+                                <?php 
+                                    if ($Proyecto["PDF_1C"] == "" OR is_null($Proyecto["PDF_1C"])){
+                                ?>
+                                <span>S/Cargar</span>
+                                <?php
+                                    }else{
+                                ?>
+                                <a href="<?php echo CESIS::$ROOT;?>admin/Proyectos/VerPdf/<?php echo $Proyecto['PDF_1C'];?>" target="_blank">Ver</a>
+                                <?php
+                                }
+                                ?>
+                            </td>
+                            <td>
+                                <?php 
+                                    $CantM = $SendMails->CantMailSend($Proyecto["id"], 1);
+                                    if ( $CantM == 0 OR is_null($CantM)) { ?>
+                                    <span>S/Enviar</span>
+                                <?php }else{ ?>
+                                    <span>Se enviaron <?php echo $CantM; ?></span>
+                                <?php }?>
+                            </td>
+                            
+                        
+                   <?php
+                         $Cont ++;    
+                        }
+                   ?>
+                        </tr>
+                        <tr class="EXpo">
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th colspan="8" class="Exportar"><a style="color:#fff" href="/admin/Proyectos/Export/<?php echo GET::Take('Id') ?>" target="_self">Descargar</a></th>
+                        </tr>
+                   <?php
+                    }else{
+                         echo "<td colspan='8' class='NoseEnocn' style='min-width: 0 none'>No se han encontrado resultados con su filtro</td>
+                        </tr>";
+                  }
+                   ?>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <?php
+        }
+        ?>
+        <?php
+        if(GET::Take('Id') == '5'){
+        ?>    
+        <div class="panel PosicionRelativa" id="tab4">
+            <form action="<?php echo CESIS::$ROOT; ?>admin/Proyectos/AceptarGanadores/" method="POST">
+                <div style="position:fixed; right: 140px; top: 45px">
+                    <?php if (isset($CantEstado6) AND !$CantEstado6){ ?>
+                    <button type="submit" onclick="return window.confirm('Esta seguro que quiere declarar estos proyectos como ganadores?\n(Tenga en cuenta que se enviara un mail a los responsables avisando el cambio de estado del proyecto)');">Ganador<br />(Faltan <?php echo $LimitFaltanteGan ?>)</button>
+                    <?php } ?>
+                </div>
+                <div style="position:fixed; right: 235px; top: 53px">
+                    <button onclick="SendMail(2,'id[]');return false;">Mail - Carga del instructivo</button>
+                </div>
+                <table>
+                    <thead style="background-color: #7AB800">
+                        <tr>
+                            <th widht="40" style="min-width: 40px">#</th>
+                            <th  style="text-align:center; width: 30px; min-width: 30px"><input type="checkbox" onclick="SelectAllCheck(this, 'id[]')" id="SelectALL" /></th>
+                            <th>Codigo</th>
+                            <th>Fecha</th>
+                            <th>Proyecto</th>
+                            <th>Categor&iacute;a</th>
+                            <th>Responsable</th>
+                            <th>Manual-2</th>
+                            <th>Envio de Mail</th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                <?php
+                    $Cont = 1;
+                    
+                    
+                    if ((count($List60)) > 0){ 
+                        foreach($List60 as $Proyecto){
+                            $Responsable = new MResponsables();
+                            $Responsable->Abrir($Proyecto["Responsable"]);
+
+                            if (isset($CantEstado6) AND $CantEstado6 AND $Proyecto["Estado"] == 6){
+                                $Estilo = 'style="background-color: #fefefe;border-bottom: 1px solid #EE9A11"';
+                            }else{
+                                $Estilo = 'style="background-color: #C8D33B;border-bottom: 1px solid #EE9A11"';
+                            }
+                ?>
+                        <tr <?php echo $Estilo; ?>>
+                            <td><?php echo $Cont;?></td>
+                            <td><input type="checkbox" name="id[]" value="<?php echo $Proyecto['id']; ?>"/></td>
+                            <td><?php echo $Proyecto["key"];?></td>
+                            <td><?php echo $Proyecto["ShowFecha"]; ?></td>
+                            <td class="HoverProy"><a onclick="PopUp('<?php echo CESIS::$ROOT; ?>admin/Proyectos/ResumentProyecto/<?php echo $Proyecto['id'];?>');" style="cursor: pointer; color: #000"><?php echo $Proyecto["Nombre"];?></a></td>
+                            <td><?php                            
+                                $Categoria = new MCategorias();
+                                $Categoria->abrir($Proyecto["Categoria"]);
+                                echo $Categoria->getNombre();
+                                ?>
+                            </td>
+                            <td><?php echo $Responsable->getNombre(); ?></td>
+                            <td>
+                                <?php 
+                                    if ($Proyecto["PDF_2C"] == "" OR is_null($Proyecto["PDF_2C"])){
+                                ?>
+                                <span>S/Cargar</span>
+                                <?php
+                                    }else{
+                                ?>
+                                <a href="<?php echo CESIS::$ROOT;?>admin/Proyectos/VerPdf/<?php echo $Proyecto['PDF_2C'];?>" target="_blank">Ver</a>
+                                <?php
+                                }
+                                ?>
+                            </td>
+                            <td>
+                                <?php 
+                                    $CantM = $SendMails->CantMailSend($Proyecto["id"], 2);
+                                    if ( $CantM == 0 OR is_null($CantM)) { ?>
+                                    <span>S/Enviar</span>
+                                <?php }else{ ?>
+                                    <span>Se enviaron <?php echo $CantM; ?></span>
+                                <?php }?>
+                            </td>
+                            
+                   <?php
+                         $Cont ++;    
+                        }
+                   ?>
+                        </tr>
+                        <tr class="EXpo">
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th colspan="8" class="Exportar"><a style="color:#fff" href="/admin/Proyectos/Export/<?php echo GET::Take('Id') ?>" target="_self">Descargar</a></th>
+                        </tr>
+                   <?php
+                    }else{
+                         echo "<td colspan='8' class='NoseEnocn' style='min-width: 0 none'>No se han encontrado resultados con su filtro</td>
+                        </tr>";
+                  }
+                   ?>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <?php
+        }
+        ?>
+        <?php
+        if(GET::Take('Id') == '6'){
+        ?>    
+        <div class="panel" id="tab5">
+            <table width="800">
+                <thead style="background-color: #7AB800">
+                    <tr>
+                        <th widht="40" style="min-width: 40px">#</th>
+                        <th>Codigo</th>
+                        <th>Fecha</th>
+                        <th>Proyecto</th>
+                        <th>Categor&iacute;a</th>
+                        <th>Responsable</th>
+                        <th>Provincia</th>
+                        <th>Mail</th>
+                        <th>Tel&eacute;fono</th>
+                    </tr>
+                </thead>
+                <tbody>
+            <?php
+                $Cont = 1;
+                
+                
+                if ((count($ListGanadores)) > 0){
+                
+                    foreach($ListGanadores as $Proyecto){
+                        $Responsable = new MResponsables();
+                        $Responsable->Abrir($Proyecto["Responsable"]);
+            ?>
+                    <tr style="background-color: #C8D33B;border-bottom: 1px solid #EE9A11">
+                        <td><?php echo $Cont;?></td>
+                        <td><?php echo $Proyecto["key"];?></td>
+                        <td><?php echo $Proyecto["ShowFecha"]; ?></td>
+                        <td class="HoverProy"><a onclick="PopUp('<?php echo CESIS::$ROOT; ?>admin/Proyectos/ResumentProyecto/<?php echo $Proyecto['id'];?>');" style="cursor: pointer; color: #000"><?php echo $Proyecto["Nombre"];?></a></td>
+                            <td><?php                            
+                                $Categoria = new MCategorias();
+                                $Categoria->abrir($Proyecto["Categoria"]);
+                                echo $Categoria->getNombre();
+                                ?>
+                            </td>
+                        <td><?php echo $Responsable->getNombre(); ?></td>
+                        <td><?php 
+                            $MProvincia = new MProvincias();
+                            $MProvincia->Abrir($Responsable->getProvincia());
+                            echo $MProvincia->getProvincia(); ?></td>
+                        <td class="HoverProy"><a href="mailto:<?php echo $Responsable->getEmail(); ?>" style="color:#000000; "><?php echo $Responsable->getEmail(); ?></a></td>
+                        <td><?php echo $Responsable->getTelefono(); ?></td>                        
+                   <?php
+                         $Cont ++;    
+                        }
+                   ?>
+                        </tr>
+                        <tr class="EXpo">
+                            <th widht="40" style="min-width: 40px">&nbsp;</th>
+                            <th style="text-align:center; width: 30px; min-width: 30px">&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th colspan="8" class="Exportar"><a style="color:#fff" href="/admin/Proyectos/Export/<?php echo GET::Take('Id') ?>" target="_self">Descargar</a></th>
+                        </tr>
+                   <?php
+                    }else{
+                         echo "<td colspan='8' class='NoseEnocn' style='min-width: 0 none'>No se han encontrado resultados con su filtro</td>
+                        </tr>";
+                  }
+                   ?>
+                </tbody>
+            </table>
+        </div>
+        <?php
+        }
+        ?>
+</div>

@@ -1,0 +1,674 @@
+body{
+    margin:0;
+    background-image: url("../img/Arg-back-home.png");
+    background-color: #ffffff;
+    background-repeat: no-repeat;
+    font-family:"Arial",Time New Roman, sans-serif;
+    font-size:11px;
+    color:#000000;
+    background-position: top;
+}
+
+img {
+    border:0;
+}
+
+img.Margin {
+  margin: 0 0 30px 20px;
+}
+
+a{
+    color: #e5e3e3;
+    text-decoration: none;
+}
+
+#Header{
+    padding: 0px 29px 0;
+}
+
+#Logo{
+    left:29px;
+    top:-30px;
+}
+
+#Nav{
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+#Nav ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#Nav ul li{
+    margin-right: 10px;
+    cursor: pointer;
+}
+#Nav ul li.Margin{
+    margin-right: 35px;
+}
+
+#LighBox-Menu{
+    
+}
+
+#RegProyecto{
+    background-image: url("../img/personas3.png");
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    height: 287px;
+}
+
+#Comunidades{
+    right:29px;
+    top:43px;
+}
+#Comunidades img{
+    margin-bottom: 5px;
+}
+
+#ConcursoNacional{
+    opacity:0.77;
+    filter:alpha(opacity=77);
+    background-color: #000000;
+    height: 140px;
+    padding-top:14px;
+    padding: 10px 0 0 0;
+}
+
+#QuienesParticipan{
+    background-image: url("../img/transparente_gris.png");
+    background-repeat: repeat;
+    background-color: transparent;
+    padding-bottom: 15px;
+    font-size:12px;
+    z-index: 200
+}
+#QuienesParticipan .Centrar > div {
+    width:205px;
+    margin: 25px 12px 0 20px;
+}
+#QuienesParticipan .Centrar .Left > div{
+    margin:12px 0;
+    min-height: 68px;
+}
+
+#QuienesParticipan .Ancho{
+    width:170px;
+}
+
+/*#Categoria1 > *, Categoria2 > *, Categoria3 > *{padding:0 10px;}*/
+
+#ProximoEvento {
+  background-color: #7AB800;
+  bottom: -196px;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: bolder;
+  padding: 10px 16px;
+  right: 32px;
+  width: 130px;
+  z-index: 2;
+}
+#ProximoEvento p{
+    text-align:center;
+    margin:0;
+}
+
+#Novedades {
+  font-size: 12px;
+  margin: 28px 32px 0 12px;
+  width: 247px;
+}
+
+#Agenda {
+  background-color: transparent;
+  background-image: url("../img/transparente_negro.png");
+  background-repeat: repeat;
+  color: #FFFFFF;
+  font-size: 13px;
+  margin: 40px 0;
+  padding: 30px 45px;
+}
+#Agenda hr{
+    border: none;
+    border-bottom:2px dotted #626261;
+    margin:38px 5px 3px;
+}
+#Agenda .Fechas{
+    width: 425px;
+}
+#Agenda .Calendario{
+    width: 175px;
+}
+#Agenda .Calendario > div{
+    margin-left:30px;
+}
+#Agenda .Calendario img{
+    margin-bottom: 10px;
+}
+#Agenda .Fechas > div{
+    width: 210px;
+}
+#Agenda p{
+    margin: 0px;
+}
+#Agenda .Negro a{
+    color: #000000;
+    font-weight: bold;
+}
+#Agenda .Margin {
+  color: #B7B7B7;
+  margin-left: 10px;
+}
+
+#ConoceProyectos {
+  margin: 30px 0;
+  padding-left: 8px;
+}
+#ConoceProyectos > div {
+  margin-right: 12px;
+  width: 325px;
+}
+#ConoceProyectos > div#Redes{
+    margin-right: 0px;
+    width: 690px;
+    
+}
+
+#Redes {
+  margin: 30px 0;
+  overflow: hidden;
+  padding: 0 0 50px;
+}
+#Redes .Ancho{
+    width:340px;
+}
+
+#Footer{
+    margin: 0px;
+    padding:35px 0 0 0;
+    background-color: #ffffff;
+    height: 225px;
+    color: #b3b3b3;
+    border-top: 1px solid #bebebe;
+}
+
+.CopyrightFooter{
+    color:#b3b3b3;
+    overflow: hidden;
+    
+}
+
+.CopyrightFooter span{
+    color:#fdd900;
+}
+
+.ResaltarFooter{
+    width: 390px;
+    overflow: hidden;
+}
+
+.Centrar{
+    margin:0 auto;
+}
+
+.AnchoContenedor{
+    width: 690px;
+}
+.AnchoContenedorMas{
+    width: 750px;
+}
+
+.PosicionAbsoluta{
+    position:absolute;
+}
+.PosicionFixed{
+    position: fixed;
+}
+
+.PosicionRelativa{
+    position:relative;
+}
+
+.Transparente{
+    background-color: transparent;
+    background-image: url("../img/transparente.png");
+    background-repeat: repeat;
+}
+
+.Left{
+    float: left;
+}
+
+.Right{
+    float: right;
+}
+
+.Clr{
+    clear:both;
+}
+
+.Resaltar{
+    color:#005c84;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.Resaltar a{
+    color:#005c84;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.Resaltar a:hover{
+    color:#005c84;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.ResaltarNov{
+    color:#7AB800;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.ResaltarNov a{
+    color:#7AB800;
+    font-size: 10px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.ResaltarNov a:hover{
+    color:#7AB800;
+    font-size: 10px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.GrisChico{
+    font-size: 11px;
+    color:#878787;
+}
+
+.Size58{
+    font-size: 58px;
+}
+
+.Size30{
+    font-size: 30px;
+}
+
+.TextoMayuscula{
+    text-transform: uppercase;
+}
+
+.TextoNegro{
+    color:#000000;
+}
+
+.Video{
+    width:394px;
+    height:244px;
+    /*padding:14px 12px;*/
+    padding:14px 0 12px 5px;
+    margin:15px 0px 0 0;
+    z-index: -1;
+}
+
+.AlinearContenido{
+    text-align:center;
+}
+
+.PunteroCursor{
+    cursor: pointer;
+}
+
+.VerMas{
+    font-size: 10px;
+    color:#7ab800;
+}
+
+.Btn{
+    cursor: pointer;
+    margin:23px 0;
+}
+
+/*Formulario de Registracion*/
+.BackRegistracion{
+    background-color: #000000;
+    padding: 10px 20px 20px 10px;
+    color:white;
+    text-align: center;
+    font-size:12px;
+   
+}
+.BackRegistracion .AnchoDiv{
+    width:170px;
+}
+.BackRegistracion .Margin{
+    margin: 8px 0;
+}
+.BackRegistracion select, .BackRegistracion input{
+    width: 160px;
+    height:20px;
+    margin-left: 10px;
+}
+.BackRegistracion input[type=submit]{
+    background-image: url('../img/btn_enviar.png');
+    border: none;
+    cursor: pointer;
+    width: 134px;
+    height: 28px;
+    text-indent: -100000px;
+}
+.BackRegistracion .Alineacion{
+    text-align: right;
+}
+/*Fin Registracion*/
+
+/*Formulario Login*/
+.CLogin{
+    color:white;
+    margin-bottom: 10px;
+}
+.CLogin .Contenedor{
+    width: 145px; 
+    margin: 0 auto;
+}
+.CLogin .Margin{
+    margin: 10px 0;
+}
+.CLogin input[type=submit]{
+    background-image: url('../img/btn_login.png');
+    width: 141px;
+    height:33px;
+    cursor: pointer;
+    text-indent: -10000px;
+    border:none;
+    margin-top: 10px;
+}
+
+/*Formulario Login*/
+
+/*Formulario PreProyecto*/
+.CProyecto{
+    color:white;
+    margin-bottom: 10px;
+    margin: 5px auto;
+}
+.CProyecto .Margin{
+    margin-bottom: 20px;
+}
+.CProyecto .Contenedor{
+    width: 145px; 
+    margin: 0 auto;
+}
+.CProyecto input[type=submit]{
+    background-image: url('../img/btn_enviar_proy.png');
+    width: 141px;
+    height:33px;
+    cursor: pointer;
+    text-indent: -10000px;
+    border:none;
+    margin-top: 10px;
+}
+.CProyecto input, .CProyecto textarea{
+    width: 141px;
+}
+.CProyecto textarea{height: 165px;}
+/*FIN Formulario PreProyecto*/
+
+/* Pop up*/
+#contMensaje {
+    background: url("../img/fondo_pop_up.png") repeat scroll 0 0 transparent;
+    height: 1280px;
+    left: 0;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 200;
+    cursor: default;
+}
+#mensaje {
+    /*background: none;*/
+    margin: 5% auto 0;
+    padding: 25px 10px;
+    position: relative;
+    vertical-align: middle;
+    min-width: 400px;
+    max-width: 800px;
+}
+
+#ContImgCerrar img {
+    cursor: pointer;
+    position: absolute;
+    right: 13px;
+    top: 34px;
+}
+
+/* Pop up*/
+
+
+textarea{
+    resize: none;
+}
+
+.LeftFooterFilas{
+    float: left;
+    width: 100%;
+    overflow: hidden;
+    margin: 0 0 20px 0;
+}
+
+.leftFooter{
+    float:left;
+    margin: 0 0 0 15px;
+}
+
+.Organizadores{
+    padding:8px 0 0 0;
+    color:#fa9307;
+    font-size: 13px;
+}
+
+#ConcursoNacionalEsponsors{
+    border-top: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+    height: 85px;
+    background: #fff;
+}
+
+.EsponsorsTop{
+    text-align: left;
+    padding: 10px 0 10px 56px;
+}
+
+.EsponsorsTopPriFila{
+    float:left;
+}
+
+.EsponsorsTopFilas{
+    width: 330px;
+}
+.EsponsorsTopSegFila {
+  float: left;
+  vertical-align: middle;
+  width: 52px;
+}
+
+.EsponsorsTopFilasSeg{
+    margin: 5px 0 0 48px;
+}
+
+.TourInDigi {
+  left: -230px;
+  /*left:161px;*/
+  position: absolute;
+  top: 14px;
+}
+
+.ImgHomeBottom img{
+    float:left;
+    margin: 20px 10px 30px 0;
+}
+
+.ImgHomeBottom{
+    width:690px;
+}
+
+.Enterate{
+    margin: 50px 0 0 0;
+    width: 690px;
+}
+
+.EsponsorsBottom{
+    padding: 0 0 0 200px;
+}
+.Copyright{
+    color:#b3b3b3;
+    font-family:"Arial",Time New Roman, sans-serif;
+    font-size: 11px;
+    margin: 35px 0 65px 0;
+}
+
+.TtituloInteCja{
+    color:#7ab800;
+    font-weight: bold;
+}
+
+.TtituloInteCja a{
+    color:#7ab800;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.TtituloInteCja a:hover{
+    color:#7ab800;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.PaddingCjaas{
+    padding: 0 5px;
+}
+
+.VerdeChico{
+    color:#7ab800;
+}
+
+.VerdeChico span{
+    color:#7ab800;
+    font-weight: bold;
+}
+
+#ContFormulario {
+  background: none repeat scroll 0 0 transparent;
+  margin: 10% auto 0;
+  padding: 25px 10px;
+  position: relative;
+  vertical-align: middle;
+  width: 427px;
+}
+.DesInput {
+  color: #FFFFFF;
+  float: left;
+  margin-bottom: 5px;
+  width: 90px;
+}
+
+.InputEst {
+  float: left;
+  margin-bottom: 5px;
+  width: 309px;
+}
+
+.InputEst input {
+  background-image: url("../img/fondo_input.png");
+  background-position: left top;
+  background-repeat: no-repeat;
+  border: medium none;
+  font-family: 'Trebuchet MS',arial;
+  font-size: 14px;
+  height: 24px;
+  width: 309px;
+}
+
+#Gracias {
+  background: url("../img/fondo-gracias-1.png") repeat scroll 0 0 transparent;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 200;
+}
+
+.InputEst textarea {
+  background: url("../img/fondo_textarea.png") no-repeat scroll left top transparent;
+  border: medium none;
+  font-family: 'Trebuchet MS',arial;
+  font-size: 14px;
+  height: 128px;
+  width: 309px;
+}
+
+.enviarConsulta button[type="submit"] {
+  background-image: url("../img/btn_enviar.png");
+  border: 0 none;
+  cursor: pointer;
+  height: 33px;
+  margin: 4px 0 0 164px;
+  width: 140px;
+}
+
+#mensajeConsulta {
+  margin: 2% auto 0;
+  max-width: 330px;
+  min-width: 342px;
+  padding: 25px 10px;
+  position: relative;
+  vertical-align: middle;
+}
+
+#ContFormularioConsulta {
+  background: none repeat scroll 0 0 #000000;
+  margin: 10% auto 0;
+  padding: 25px 15px;
+  position: relative;
+  vertical-align: middle;
+  width: 310px;
+}
+
+#ContImgCerrarConsulta img {
+  cursor: pointer;
+  position: absolute;
+  right: 16px;
+  top: 63px;
+  z-index: 100;
+}
+
+.MarginProyectos{
+    margin:0 0 20px 0;
+}
+
+.twitter-share-button twitter-count-horizontal{
+  height: 20px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  vertical-align: top;
+  width: 110px; 
+}
+
+.connect_top clearfix a img{
+    display:none;
+}
+
+.name_block{
+    display: none;
+}

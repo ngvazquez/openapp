@@ -1,0 +1,252 @@
+body{
+    margin:0;
+    background-image: url("../img/Arg-back.png");
+    background-color: #ffffff;
+    background-repeat: no-repeat;
+    font-family:"Arial","Time New Roman", sans-serif;
+    font-size:11px;
+    color:#000000;
+    background-position: top;
+}
+a{
+    text-decoration: none;
+}
+
+th{
+    min-width: 103px;
+}
+
+h3{
+    margin: 0;
+}
+
+.PosicionAbsoluta{
+    position:absolute;
+}
+
+.PosicionFixed{
+    position: fixed;
+}
+
+.PosicionRelativa{
+    position:relative;
+}
+
+.AnchoContenedor{
+    width: 800px;
+}
+
+.Centrar{
+    margin: 0 auto;
+}
+
+.Alinear{
+    text-align: center;
+}
+
+#Login{
+    background-color:transparent;
+    color: white;
+    padding: 50px 0;
+}
+#Listado {
+  color: black;
+  /*min-height: 85px;*/
+  width: 100%;
+}
+
+.Fondo{
+    left:0; 
+    /*top: 166px;*/
+   /* background-color: #000000;
+    opacity:0.75;
+    filter:alpha(opacity=75);*/ 
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -3;
+    background: url('../img/FondoAdminBack.png');
+}
+
+/* Pop up*/
+#contMensaje {
+    background: url("../img/fondo_pop_up.png") repeat scroll 0 0 transparent;
+    height: 1280px;
+    left: 0;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 200;
+    cursor: default;
+}
+#mensaje {
+    /*background: none;*/
+    margin: 5% auto 0;
+    padding: 25px 10px;
+    position: relative;
+    vertical-align: middle;
+    min-width: 400px;
+    max-width: 800px;
+}
+
+#ContImgCerrar img {
+  cursor: pointer;
+  position: absolute;
+  right: 13px;
+  top: -20px;
+}
+
+/* Pop up*/
+
+
+/* Tabs */
+
+.panel {
+  /*background-color: #3E3E3E;*/
+  clear: both;
+  padding: 0 1em 1em 1em;
+  text-align: center;
+  margin:0px;
+ /* background: url('../img/FondoAdminBack.png');*/
+}
+
+fieldset {
+    padding: 2em;
+}
+
+.panel.active-tab-body {
+    display: block;
+}
+.bar {
+    padding: 5px;
+    background-color: #3e3e3e;
+}
+
+#tabs {
+  height: 26px;
+  list-style: none outside none;
+  margin: 0;
+  padding: 10px 0 0 7px;
+ /* background: url('../img/FondoAdminBack.png')*/
+}
+
+#tabs li {
+    float: left;
+}
+
+#tabs div {
+    float: left;
+    padding: 5px 8px;
+    margin-left: 6px;
+    background-color: #C8D33B;
+    text-decoration: none;
+    color: #999999;
+}
+
+#tabs div.active-tab {
+    background-color: #7AB800;
+    border-top: 3px solid #EE9A11;
+    color: #CCCCCC;
+    padding-top: 3px;
+}
+
+/* Tabs */
+
+.HoverProy a{
+    color: #000000;
+    text-decoration: none;
+}
+
+.HoverProy a:hover{
+    color: #7AB800;
+    text-decoration: underline;
+}
+
+.InstanciasAprob a{
+    color:#000000;
+    text-decoration: none;
+}
+
+.InstanciasAprob a:hover{
+    color:#000000;
+    text-decoration: underline;
+}
+
+.SelctFiltro{
+    float:left;
+    width: 160px;
+    margin:0 10px;
+}
+
+.FiltrarPorTit{
+    color: rgb(255, 255, 255); 
+    float: left; 
+    padding: 0px; 
+    margin: 0px; 
+    width: 165px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.FiltrarPor{
+    color: rgb(255, 255, 255); 
+    float: left; 
+    padding: 0px; 
+    margin: 0 0 15px 0; 
+    width: 60px;
+    font-weight: normal;
+}
+
+.FiltrarPorCodigo{
+    color: rgb(255, 255, 255); 
+    float: left; 
+    padding: 0px; 
+    margin: 0 0 15px 0; 
+    width: 115px;
+    font-weight: normal;
+}
+
+.FiltrarClase {
+  left: 164px;
+  position: absolute;
+  top: -143px;
+  width: 950px;
+}
+.FiltrarPorCat{
+    width: 150px;
+    float:left;
+    margin:0 0 0 36px;
+}
+
+.FiltrarPorCat select{
+    margin:0 0 0 6px;
+    padding:0px;
+}
+
+.FiltrarReset{
+    width: 50px;
+    float:left;
+    margin:0;
+}
+
+.NoseEnocn {
+  background: none repeat scroll 0 0 #C8D33B;
+  color: #000000;
+  font-size: 12px;
+  font-weight: bold;
+  height: 50px;
+  text-align: center;
+  min-width: 891px;
+}
+
+.Exportar {
+  border: 1px solid #FFFFFF;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: bold;
+  height: 24px;
+}
+
+.EXpo th{
+    margin:10px 0 0 0;
+}

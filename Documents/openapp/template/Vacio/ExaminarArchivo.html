@@ -1,0 +1,7 @@
+<div>
+    <div style="margin: 0pt 0pt 19px; text-align: center; font-weight: normal;">Usted est&aacute; por subir un archivo al proyecto: <b>"<?php echo (GET::take("Otro_0")); ?>"</b></div>
+    <form class="Enviar" action="<?php echo CESIS::$ROOT; ?>admin/Proyectos/Cargarfileapro/<?php echo GET::take('Id');?>" method="post" enctype="multipart/form-data" onsubmit="return Validar(this);" >
+        <input type="file" name="CargaArchivo" Onchange="VerificarExtencion(this, 'Archivo');" validar="rq" />
+        <input type="submit" value="Subir"/>
+    </form>
+</div>  

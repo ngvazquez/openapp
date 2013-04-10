@@ -1,0 +1,41 @@
+<form action="#" method="post" onSubmit="ValidarFormAjax('<?php echo CESIS::$ROOT; ?>Home/Postularme/',this,MensOKProy,MensErrorProy,MensUsuarioExiste);return false;">
+    <?php
+        if(!is_null($CatPreSelect)){
+    ?>
+    <input type="hidden" value="<?php echo $CatPreSelect?>" name="categoria" />
+    <?php
+        }
+    ?>     
+    <?php
+        if(is_null($CatPreSelect)){
+    ?>
+    <div>Categor&iacute;as</div>
+    <div> 
+        <select validar="rq" name="categoria">
+            <option value="">Seleccione una Categor&iacute;a</option>
+            <?php
+                foreach($ArCategorias as $Cats){
+                    ?>
+                    <option value="<?php echo $Cats['id']?>"><?php echo $Cats["nombre"]?></option>
+                    <?php
+                }
+            ?>
+         </select>
+    </div>
+    <?php
+    }
+    ?>
+    <div class="CProyecto" style="padding: 10px 0 20px;margin: 266px 0 0;background-color: #92C233;">
+        <div>
+            <div align="right"><img class="PunteroCursor" src="<?php echo CESIS::$ROOT; ?>img/cerrar_negro.png" onclick="javascript:Effect.Squish('Form');"/></div>
+            <div class="Clr"></div>
+        </div>
+        <div class="Contenedor">
+            <div><img src="<?php echo CESIS::$ROOT; ?>img/proyecto.png"/></div>
+            <div class="Margin"><input validar="rq" type="text" name="nombre" value="" /></div>
+            <div><img src="<?php echo CESIS::$ROOT; ?>img/descripcion.png"/></div>
+            <div class="Margin"><textarea validar="rq" name="descripcion"></textarea></div>
+            <div><input type="submit"/></div>
+       </div>
+   </div>
+</form>

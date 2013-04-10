@@ -1,0 +1,16 @@
+<!--<div class="PosicionAbsoluta" style="left: 25px;top:260px;"><a href="<?php echo CESIS::$ROOT; ?>Agenda/" target="_self"><img src="<?php echo CESIS::$ROOT; ?>img/encontranos.png" border="0"/></a></div>-->
+<div class="AnchoContenedor Centrar">
+    <div id="ListaProy">
+        <div class="Novedades">
+            <div class="ProyectTitle ResaltarNov"><?php echo $Noticias->getNombre(); ?></div>
+            <div class="ProyectTitle ResaltarNovSub"><?php echo $Noticias->getSubtitulo(); ?></div>
+            <div>
+                <div>
+                    <div class="NoveLeftText"><img src="<?php echo $Noticias->getImagen(); ?>" style="float:left; margin:0 15px 0px 0"/><?php echo $Noticias->getDescripcion(); ?></div>
+                </div>
+                <div class="Clr">&nbsp;</div>
+                <div class="ProyectTitle ResaltarNovSub"><a href="<?php echo $Noticias->getLink(); ?>" target="_blank">Ver fuente del art&iacute;culo</a></div>
+            </div>
+        </div>
+    </div>
+</div>
