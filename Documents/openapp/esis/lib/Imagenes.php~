@@ -1,14 +1,4 @@
 <?php
-/**
- * 
- * Clase Imagenes
- *
- * @developer Equilibrio
- * @version 0.8[beta]
- *
- * @author Andres O. Brizuela
- *
-*/
 
 class Imagenes{
     private static $src;
